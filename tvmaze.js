@@ -28,7 +28,6 @@ async function searchShows(query) {
   for (let i = 0; i < shows.length; i++) {
     tvs.push(shows[i].show);
   }
-  console.log(tvs);
   return tvs;
 }
 
@@ -63,7 +62,6 @@ function populateShows(shows) {
   for (let show of shows) {
     try {
       let image = show.image.medium;
-      console.log(image);
 
       let $item = $(
         `<div class="col-md-6 col-lg-3 Show" data-show-id="${show.id}">
@@ -107,7 +105,6 @@ $("#shows-list").on("click", ".eps", async function (evt) {
   evt.preventDefault();
 
   let episodes = await getEpisodes(Number($(this).attr("id")));
-  console.log("hi");
   populateEpisodes(episodes);
 });
 
@@ -127,18 +124,13 @@ async function getEpisodes(id) {
     // console.log(res.data[i]);
   }
 
-  console.log(episodes);
   return episodes;
 }
 
 function populateEpisodes(epArr) {
   for (let ep of epArr) {
-    console.log(ep);
-    console.log(ep.season);
     let item = `<li><b>${ep.name}</b> season: ${ep.season}, number: ${ep.number}</li>`;
-    console.log(
-      `<li><b>${ep.name}</b> season: ${ep.season}, number: ${ep.number}</li>`
-    );
+
     $("#episodes-list").append(item);
     $("#episodes-area").css("display", "");
   }
