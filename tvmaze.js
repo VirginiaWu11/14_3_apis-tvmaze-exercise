@@ -128,6 +128,7 @@ async function getEpisodes(id) {
 }
 
 function populateEpisodes(epArr) {
+  $("#episodes-list").empty();
   for (let ep of epArr) {
     let item = `<li><b>${ep.name}</b> season: ${ep.season}, number: ${ep.number}</li>`;
 
